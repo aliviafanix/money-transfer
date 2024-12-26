@@ -10,6 +10,8 @@
             --primary-color: #14e1ff;
             --dark-color: #1a1a1a;
             --white-color: #ffffff;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
 
         * {
@@ -30,6 +32,8 @@
             padding: 20px 0;
             background-color: rgba(26,26,26,0.9);
             z-index: 1000;
+            transition: var(--transition);
+            backdrop-filter: blur(8px);
         }
 
         .nav-container {
@@ -43,6 +47,13 @@
 
         .logo img {
             height: 50px;
+            transition: var(--transition);
+            border-radius: 10px;
+        }
+
+        .logo img:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: var(--shadow);
         }
 
         .nav-links {
@@ -54,54 +65,134 @@
             color: var(--white-color);
             text-decoration: none;
             font-weight: 600;
-            transition: color 0.3s;
+            transition: var(--transition);
+            padding: 8px 16px;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-color);
+            border-radius: 20px;
+            transform: translateX(-100%);
+            transition: var(--transition);
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        .nav-links a:hover::before {
+            transform: translateX(0);
         }
 
         .nav-links a:hover {
             color: var(--primary-color);
+            transform: translateY(-2px);
         }
 
         /* Hero section */
         .hero {
             min-height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://static.tildacdn.pro/tild6133-6136-4638-b630-636561326333/__2024-11-21_175121.png');
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://static.tildacdn.pro/tild6133-6136-4638-b630-636561326333/__2024-11-21_175121.png');
             background-size: cover;
             background-position: center;
             display: flex;
             align-items: center;
             color: var(--white-color);
             padding: 0 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(20,225,255,0.1) 0%, transparent 70%);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.1); opacity: 0.1; }
+            100% { transform: scale(1); opacity: 0.3; }
         }
 
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
             text-align: center;
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s forwards 0.5s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero h1 {
             font-size: 48px;
             margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .hero p {
             font-size: 24px;
             margin-bottom: 40px;
+            opacity: 0.9;
         }
 
         .btn {
             display: inline-block;
             padding: 15px 30px;
-            border-radius: 50px;
+            border-radius: 25px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s;
+            transition: var(--transition);
             margin: 10px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
         }
 
         .btn-primary {
             background-color: var(--primary-color);
             color: var(--dark-color);
+            box-shadow: 0 4px 15px rgba(20,225,255,0.3);
         }
 
         .btn-outline {
@@ -110,19 +201,34 @@
         }
 
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
         }
 
         /* Steps section */
         .steps {
             padding: 100px 20px;
+            background: linear-gradient(to bottom, #f8f9fa, #ffffff);
         }
 
         .section-title {
             text-align: center;
             font-size: 36px;
             margin-bottom: 60px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary-color);
+            border-radius: 2px;
         }
 
         .steps-container {
@@ -131,24 +237,61 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
+            padding: 20px;
         }
 
         .step-card {
             text-align: center;
-            padding: 30px;
+            padding: 40px 30px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            transform: translateY(0);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary-color);
+            transform: scaleX(0);
+            transition: var(--transition);
+            transform-origin: left;
+        }
+
+        .step-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .step-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
 
         .step-number {
-            width: 35px;
-            height: 35px;
+            width: 50px;
+            height: 50px;
             background: var(--primary-color);
-            color: var(--dark-color);
+            color: var(--white-color);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 20px;
             font-weight: bold;
+            font-size: 20px;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(20,225,255,0.3);
+        }
+
+        .step-card:hover .step-number {
+            transform: scale(1.1) rotate(360deg);
         }
 
         /* Benefits section */
@@ -156,6 +299,24 @@
             background-color: var(--dark-color);
             color: var(--white-color);
             padding: 100px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefits::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(20,225,255,0.05) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .benefits-container {
@@ -164,37 +325,68 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
+            position: relative;
+            z-index: 1;
         }
 
         .benefit-card {
             text-align: center;
-            padding: 30px;
+            padding: 40px 30px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.1);
         }
 
         .benefit-icon {
             width: 80px;
             height: 80px;
             margin: 0 auto 20px;
+            transition: var(--transition);
+            filter: brightness(0) invert(1);
+        }
+
+        .benefit-card:hover .benefit-icon {
+            transform: scale(1.1) rotate(10deg);
         }
 
         /* Footer */
         .footer {
             padding: 50px 20px;
             text-align: center;
+            background: var(--dark-color);
+            color: var(--white-color);
         }
 
         .social-links {
-            margin: 20px 0;
+            margin: 30px 0;
         }
 
         .social-links a {
-            margin: 0 10px;
+            margin: 0 15px;
             display: inline-block;
+            transition: var(--transition);
         }
 
         .social-links img {
             width: 48px;
             height: 48px;
+            border-radius: 12px;
+            transition: var(--transition);
+            filter: brightness(0) invert(1);
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px) rotate(8deg);
+        }
+
+        .social-links a:hover img {
+            filter: brightness(0) invert(1) sepia(1) saturate(5000%) hue-rotate(170deg);
         }
 
         @media (max-width: 768px) {
@@ -208,6 +400,10 @@
 
             .nav-links {
                 display: none;
+            }
+
+            .step-card, .benefit-card {
+                transform: none;
             }
         }
     </style>
@@ -262,7 +458,7 @@
             <div class="step-card">
                 <div class="step-number">5</div>
                 <h3>Чек</h3>
-                <p>После перевода денег ��бязательно загрузите чек об оплате</p>
+                <p>После перевода денег обязательно загрузите чек об оплате</p>
             </div>
             <div class="step-card">
                 <div class="step-number">6</div>
@@ -284,7 +480,7 @@
                 <h3>Очень выгодный курс обмена</h3>
             </div>
             <div class="benefit-card">
-                <img src="https://static.tildacdn.pro/tild3966-6137-4332-a361-343664626361/vector.svg" alt="Простота и��пользования" class="benefit-icon">
+                <img src="https://static.tildacdn.pro/tild3966-6137-4332-a361-343664626361/vector.svg" alt="Простота использования" class="benefit-icon">
                 <h3>Простота и удобство использования</h3>
             </div>
         </div>
@@ -323,6 +519,23 @@
             } else {
                 header.style.backgroundColor = 'rgba(26,26,26,0.9)';
             }
+        });
+
+        // Анимация появления элементов при скролле
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.step-card, .benefit-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+            observer.observe(el);
         });
     </script>
 </body>
