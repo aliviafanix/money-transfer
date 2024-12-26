@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Перевод денег между Казахстаном и Россией</title>
+    <meta name="description" content="Переводы между Россией и Казахстаном в чат-боте Telegram. Быстро и выгодно!">
+    <style>
+        :root {
+            --primary-color: #14e1ff;
+            --dark-color: #1a1a1a;
+            --white-color: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+        }
+
+        /* Header styles */
+        .header {
+            position: fixed;
+            width: 100%;
+            padding: 20px 0;
+            background-color: rgba(26,26,26,0.9);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--white-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://static.tildacdn.pro/tild6133-6136-4638-b630-636561326333/__2024-11-21_175121.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: var(--white-color);
+            padding: 0 20px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 24px;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin: 10px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--dark-color);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--white-color);
+            color: var(--white-color);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* Steps section */
+        .steps {
+            padding: 100px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 60px;
+        }
+
+        .steps-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .step-card {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .step-number {
+            width: 35px;
+            height: 35px;
+            background: var(--primary-color);
+            color: var(--dark-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-weight: bold;
+        }
+
+        /* Benefits section */
+        .benefits {
+            background-color: var(--dark-color);
+            color: var(--white-color);
+            padding: 100px 20px;
+        }
+
+        .benefits-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .benefit-card {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .social-links {
+            margin: 20px 0;
+        }
+
+        .social-links a {
+            margin: 0 10px;
+            display: inline-block;
+        }
+
+        .social-links img {
+            width: 48px;
+            height: 48px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <a href="https://t.me/TransferTG_bot" class="logo">
+                <img src="https://thb.tildacdn.pro/tild3539-3736-4131-a431-653432613034/-/resize/504x/IMG_9239.PNG" alt="FITPay">
+            </a>
+            <div class="nav-links">
+                <a href="#" class="active">Для Физических лиц</a>
+                <a href="org">Для Юридических лиц</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Обмен валюты Казахстан — Россия</h1>
+            <p>Выгодный курс и быстрый обмен. Работаем в Telegram.</p>
+            <div class="buttons">
+                <a href="https://t.me/TransferTG_bot" class="btn btn-primary">Обменять валюту</a>
+                <a href="#steps" class="btn btn-outline">Как это работает?</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="steps" id="steps">
+        <h2 class="section-title">Быстрый обмен и выгодный курс</h2>
+        <div class="steps-container">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h3>Банк</h3>
+                <p>Выбираете банк с которого совершаете платеж</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h3>Номер карты</h3>
+                <p>Напишите номер карты на которую нужно перевести деньги</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h3>Валюта перевода</h3>
+                <p>Если нужно перевести с Казахстана, жмете иконку ₸, если с России — ₽</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">4</div>
+                <h3>Реквизиты</h3>
+                <p>После нажатия "Отправить деньги" вам в течение 1 минуты придут реквизиты и сумма платежа</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">5</div>
+                <h3>Чек</h3>
+                <p>После перевода денег ��бязательно загрузите чек об оплате</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">6</div>
+                <h3>Завершение</h3>
+                <p>После загрузки чека деньги будут переведены получателю в течение 10 минут</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="benefits">
+        <h2 class="section-title">Преимущества работы с нами</h2>
+        <div class="benefits-container">
+            <div class="benefit-card">
+                <img src="https://static.tildacdn.pro/tild6163-3939-4233-b738-343232613332/vector.svg" alt="Быстрый обмен" class="benefit-icon">
+                <h3>Быстрый обмен валюты</h3>
+            </div>
+            <div class="benefit-card">
+                <img src="https://static.tildacdn.pro/tild6430-3534-4437-b132-666536616165/vector.svg" alt="Выгодный курс" class="benefit-icon">
+                <h3>Очень выгодный курс обмена</h3>
+            </div>
+            <div class="benefit-card">
+                <img src="https://static.tildacdn.pro/tild3966-6137-4332-a361-343664626361/vector.svg" alt="Простота и��пользования" class="benefit-icon">
+                <h3>Простота и удобство использования</h3>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <h3>ООО "ИКС ФИНАНС"</h3>
+        <p>FITPay-service@yandex.ru</p>
+        <p>ИНН 2222909288<br>КПП 222201001<br>ОГРН 1242200017201</p>
+        <div class="social-links">
+            <a href="https://t.me/TransferTG_bot" target="_blank" rel="nofollow noopener">
+                <img src="https://static.tildacdn.pro/tild6163-3939-4233-b738-343232613332/vector.svg" alt="Telegram">
+            </a>
+            <a href="https://wa.me/79609531049" target="_blank" rel="nofollow noopener">
+                <img src="https://static.tildacdn.pro/tild6430-3534-4437-b132-666536616165/vector.svg" alt="WhatsApp">
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        // Плавная прокрутка к секциям
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Изменение фона шапки при прокрутке
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.style.backgroundColor = 'rgba(26,26,26,1)';
+            } else {
+                header.style.backgroundColor = 'rgba(26,26,26,0.9)';
+            }
+        });
+    </script>
+</body>
+</html> 
